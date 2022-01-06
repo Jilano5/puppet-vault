@@ -73,7 +73,7 @@ class vault::config {
       default:   { $real_manage_service_file = false }
     }
   } else {
-    validate_bool($::vault::manage_service_file)
+    validate_legacy(Boolean, 'validate_bool', $::vault::manage_service_file)
     $real_manage_service_file = $::vault::manage_service_file
   }
 
