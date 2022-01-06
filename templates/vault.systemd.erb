@@ -22,11 +22,10 @@ ProtectSystem=full
 ProtectHome=read-only
 <% # Still require check for :undef for Puppet 3.x -%>
 <% if scope['vault::disable_mlock'] && scope['vault::disable_mlock'] != :undef -%>
-CapabilityBoundingSet=CAP_SYSLOG
 <% else -%>
 SecureBits=keep-caps
 Capabilities=CAP_IPC_LOCK+ep
-CapabilityBoundingSet=CAP_SYSLOG CAP_IPC_LOCK
+CapabilityBoundingSet=CAP_IPC_LOCK
 <% end -%>
 NoNewPrivileges=yes
 Environment=GOMAXPROCS=<%= scope['vault::num_procs'] %>
